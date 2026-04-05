@@ -1,10 +1,15 @@
 import './App.css';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [info, setInfo] = useState<string>('');
+  useEffect(() => {
+    setInfo('Hello World from useEffect hook.');
+  }, []);
 
   return (
     <>
-      <h1>Hello World</h1>
+      <h1>{info}</h1>
     </>
   )
 }
