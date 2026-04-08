@@ -1,5 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Home() {
   // Providing a type to useState fixes the 'never' type issue:
@@ -20,8 +21,10 @@ function Home() {
       {info && info.products.map((item: any) => {
         return (
           <div key={item.id}>
-            <img src={item.images[0]} alt={item.title} />
             <h2>{item.title}</h2>
+            <nav>
+              <Link to={`/product/${item.id}`}>Product Page</Link>
+            </nav>
           </div>
         )
       })}
