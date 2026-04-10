@@ -11,15 +11,15 @@ function Product() {
       setProduct(data);
     }
     getProductFromAPI();
-  }, [])
+  }, [params.id])
   return (
     <div>
-      {product && product.images.length > 0 && product.images.map((image: string) => (
+      {product?.images?.length > 0 && product.images.map((image: string) => (
         <div key={image}>
           <img src={image} alt={product.title} loading='lazy'/>
         </div>
       ))}
-      { product && product.images.length === 0 && <p>No images found</p> }
+      { product?.images?.length === 0 && <p>No images found</p> }
     </div>
   )
 }

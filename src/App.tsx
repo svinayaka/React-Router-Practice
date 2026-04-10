@@ -18,7 +18,7 @@ function Home() {
 
   return (
     <>
-      {info && info.products.map((item: any) => {
+      {info?.products.map((item: any) => {
         return (
           <div key={item.id}>
             <h2>{item.title}</h2>
