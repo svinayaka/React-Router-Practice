@@ -13,7 +13,6 @@ function App() {
         </nav>
       </header>
       <main>
-
         <Routes>
           <Route path="/" element={<Home />} />
           {/* Note the '/*' -> this tells React Router to hand off routing to ProductRoutes */}

@@ -1,0 +1,19 @@
+.products-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.products-container section {
+  flex: 50 50 auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.search-section {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
