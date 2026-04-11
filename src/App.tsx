@@ -1,35 +1,27 @@
-import './App.css';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Home from './pages/Home.tsx';
+import ProductRoutes from './pages/Products/ProductRoutes.tsx';
 
-function Home() {
-  // Providing a type to useState fixes the 'never' type issue:
-  // Now TypeScript knows that `info` will eventually hold an object with a `products` array
-  const [info, setInfo] = useState<any>();
 
-  useEffect(() => {
-    const apiRequest = async () => {
-      const response = await fetch('https://dummyjson.com/products');
-      const data = await response.json();
-      setInfo(data);
-    };
-    apiRequest();
-  }, []);
-
+function App() {
   return (
-    <>
-      {info?.products.map((item: any) => {
-        return (
-          <div key={item.id}>
-            <h2>{item.title}</h2>
-            <nav>
-              <Link to={`/product/${item.id}`}>Product Page</Link>
-            </nav>
-          </div>
-        )
-      })}
-    </>
+    <BrowserRouter>
+      <header>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/products">Products</Link>
+        </nav>
+      </header>
+      <main>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {/* Note the '/*' -> this tells React Router to hand off routing to ProductRoutes */}
+          <Route path="products/*" element={<ProductRoutes />} />
+        </Routes>
+      </main>
+    </BrowserRouter>
   )
 }
 
-export default Home
+export default App;
