@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import SearchInput from '../../components/SearchInput';
-import SearchButton from '../../components/SearchButton';
-import ProductCategory from './ProductCategory';
-import './Products.css';
+import './AllProducts.css';
 
-function Products() {
+function AllProducts() {
   // Providing a type to useState fixes the 'never' type issue:
   // Now TypeScript knows that `info` will eventually hold an object with a `products` array
   const [info, setInfo] = useState<any>();
@@ -20,15 +17,6 @@ function Products() {
   }, []);
 
   return (
-    <>
-    <section>
-        <ProductCategory />
-    </section>
-    <section className="products-container">
-      <section className="search-section">
-        <SearchInput searchCategory="Products" />
-        <SearchButton searchCategory="Products" />
-      </section>
       <section className="products-list">
         {info?.products.map((item: any) => {
           return (
@@ -41,9 +29,7 @@ function Products() {
           )
         })}
       </section>
-    </section>
-    </>
   )
 }
 
-export default Products
+export default AllProducts;

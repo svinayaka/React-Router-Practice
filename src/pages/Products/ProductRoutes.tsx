@@ -1,17 +1,19 @@
 import { Routes, Route } from 'react-router-dom';
-import Products from './Products';
+import ProductHomePage from './ProductHomePage';
+import AllProducts from './AllProducts';
 import ProductDetails from './ProductDetails';
 import ProductCategoryDetail from './ProductCategoryDetail';
 
 export default function ProductRoutes() {
   return (
     <Routes>
-      {/* The 'index' route matches exactly /products */}
-      <Route index element={<Products />} />
-      
-      {/* The ':id' route matches /products/123 */}
+      <Route path="/" element={<ProductHomePage />}>
+        <Route path="all" element={<AllProducts />} />
+        {/* Important: Now the details will safely render in the Outlet! */}
+        <Route path="categories/:category" element={<ProductCategoryDetail />} />
+      </Route>
+      {/* Product Details stands alone since it doesn't need the Category Sidebar */}
       <Route path=":id" element={<ProductDetails />} />
-      <Route path="categories/:category" element={<ProductCategoryDetail />} />
     </Routes>
   );
 }

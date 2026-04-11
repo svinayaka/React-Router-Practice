@@ -1,4 +1,5 @@
 import './AnchorPill.css';
+import { Link } from 'react-router-dom';
 
 type AnchorPillProps = {
   text: string;
@@ -7,7 +8,7 @@ type AnchorPillProps = {
 
 function AnchorPill({text, link}: Readonly<AnchorPillProps>) {
   return (
-    <a href={link} className='anchor-pill'>{text}</a>
+    <Link to={link} className='anchor-pill'>{text}</Link>
   )
 }
 
