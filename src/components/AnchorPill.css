@@ -1,0 +1,17 @@
+
+.anchor-pill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  width: 100%;
+  padding: 0 20px;
+  border-radius: 99999px;
+  /* Make the background exactly the same as the darker border! */
+  background-color: #0056b3; 
+  color: white;
+  text-decoration: none;
+}
+.anchor-pill:hover {
+  background-color: #007bff;
+}

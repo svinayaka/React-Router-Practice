@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SearchInput from '../../components/SearchInput';
 import SearchButton from '../../components/SearchButton';
+import ProductCategory from './ProductCategory';
 import './Products.css';
 
 function Products() {
@@ -19,7 +20,11 @@ function Products() {
   }, []);
 
   return (
-    <div className="products-container">
+    <>
+    <section>
+        <ProductCategory />
+    </section>
+    <section className="products-container">
       <section className="search-section">
         <SearchInput searchCategory="Products" />
         <SearchButton searchCategory="Products" />
@@ -30,13 +35,14 @@ function Products() {
             <div key={item.id}>
               <h2>{item.title}</h2>
               <nav>
-                <Link to={`/products/${item.id}`}>Product Page</Link>
+                <Link to={`/products/${item.id}`}>{item.title}</Link>
               </nav>
             </div>
           )
         })}
       </section>
-    </div>
+    </section>
+    </>
   )
 }
 
