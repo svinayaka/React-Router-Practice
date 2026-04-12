@@ -1,5 +1,5 @@
 import './AnchorPill.css';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 type AnchorPillProps = {
   text: string;
@@ -8,7 +8,12 @@ type AnchorPillProps = {
 
 function AnchorPill({text, link}: Readonly<AnchorPillProps>) {
   return (
-    <Link to={link} className='anchor-pill'>{text}</Link>
+    <NavLink 
+      to={link} 
+      className={({ isActive }) => isActive ? 'anchor-pill active' : 'anchor-pill'}
+    >
+      {text}
+    </NavLink>
   )
 }
 

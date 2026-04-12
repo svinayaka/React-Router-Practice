@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 function ProductCategoryDetail() {
@@ -23,7 +23,12 @@ function ProductCategoryDetail() {
               <h2>{item.title}</h2>
               <nav>
                 {/* We can safely link to the details page, since its route is in ProductRoutes */}
-                <Link to={`/products/${item.id}`}>{item.title}</Link>
+                <NavLink 
+                  to={`/products/${item.id}`}
+                  className={({ isActive }) => isActive ? 'active' : ''}
+                >
+                  {item.title}
+                </NavLink>
               </nav>
             </div>
           )

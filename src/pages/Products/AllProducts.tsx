@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './AllProducts.css';
 
 function AllProducts() {
@@ -23,7 +23,12 @@ function AllProducts() {
             <div key={item.id}>
               <h2>{item.title}</h2>
               <nav>
-                <Link to={`/products/${item.id}`}>{item.title}</Link>
+                <NavLink 
+                  to={`/products/${item.id}`}
+                  className={({ isActive }) => isActive ? 'active' : ''}
+                >
+                  {item.title}
+                </NavLink>
               </nav>
             </div>
           )
