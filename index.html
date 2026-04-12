@@ -5,6 +5,17 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>react-learning</title>
+    <script>
+      (function() {
+        var theme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <style>
+      /* Ensure the background paints instantly before Vite injects the main styles */
+      html[data-theme='dark'] body { background-color: #121212; }
+      html:not([data-theme='dark']) body { background-color: #ffffff; }
+    </style>
   </head>
   <body>
     <div id="root"></div>
