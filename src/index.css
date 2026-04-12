@@ -10,6 +10,8 @@
 :root {
   --bg-color: #ffffff;
   --text-color: #1a1a1a;
+  --card-bg: #ffffff;
+  --border-color: #e0e0e0;
 }
 
 [data-theme='dark'] {
@@ -25,6 +27,8 @@ body {
   flex-direction: column;
   height: 100vh;
   margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 #root {
