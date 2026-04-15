@@ -2,7 +2,7 @@
   display: grid;
   /* min(100%, 280px) allows it to shrink below 280px if the screen itself is extremely small, preventing horizontal scrolling */
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
-  gap: 2rem;
+  gap: var(--space-xl);
   padding: var(--space-0);
   margin: var(--space-0);
 }
@@ -10,6 +10,6 @@
 /* Specific Mobile adjustments */
 @media (max-width: 768px) {
   .products-grid {
-    gap: 1rem; /* Smaller gap on mobile screens */
+    gap: var(--space-md); /* Smaller gap on mobile screens */
   }
 }

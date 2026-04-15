@@ -4,14 +4,14 @@
   justify-content: center;
   align-items: center;
   height: 42px;
-  width: 100%;
-  padding: 0 20px;
-  border-radius: 99999px;
+  width: var(--w-full);
+  padding: 0 var(--space-lg);
+  border-radius: var(--radius-pill);
   /* Make the background exactly the same as the darker border! */
-  background-color: #0056b3; 
+  background-color: var(--color-primary-dark); 
   color: white;
   text-decoration: none;
 }
 .anchor-pill:hover {
-  background-color: #007bff;
+  background-color: var(--color-primary);
 }

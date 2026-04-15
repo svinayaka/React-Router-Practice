@@ -1,14 +1,14 @@
 .products-container {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: var(--space-lg);
 }
 
 .products-container section {
   flex: 50 50 auto;
   border: 1px solid var(--border-color);
-  padding: 10px;
-  border-radius: 4px;
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
 }
 
 .search-section {
