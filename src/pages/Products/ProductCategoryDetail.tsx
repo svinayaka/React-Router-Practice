@@ -1,5 +1,7 @@
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import Card from '../../components/Card';
+import './ProductCategoryDetail.css';
 
 function ProductCategoryDetail() {
   const [products, setProducts] = useState<any[]>([]);
@@ -16,23 +18,17 @@ function ProductCategoryDetail() {
   }, [params.category])
 
   return (
-    <section className="products-list">
+    <section className="products-list" aria-labelledby="products-heading">
+        <h2 id="products-heading">Our Products</h2>
+        <ul className='products-grid'>
         {products?.map((item: any) => {
           return (
-            <div key={item.id}>
-              <h2>{item.title}</h2>
-              <nav>
-                {/* We can safely link to the details page, since its route is in ProductRoutes */}
-                <NavLink 
-                  to={`/products/${item.id}`}
-                  className={({ isActive }) => isActive ? 'active' : ''}
-                >
-                  {item.title}
-                </NavLink>
-              </nav>
-            </div>
+            <li key={item.id}>
+              <Card product={item} />
+            </li>
           )
         })}
+        </ul>
     </section>
   )
 }

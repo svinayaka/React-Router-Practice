@@ -47,6 +47,10 @@
   padding: var(--space-0);
 }
 
+ul, ol {
+  list-style: none;
+}
+
 body {
   display: flex;
   flex-direction: column;
