@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import Card from '../../components/Card';
 import './AllProducts.css';
+import './ProductCategoryDetail.css'; /* Importing the generic grid styles */
 
 function AllProducts() {
   // Providing a type to useState fixes the 'never' type issue:
@@ -17,23 +19,21 @@ function AllProducts() {
   }, []);
 
   return (
-      <section className="products-list">
+    <section className="products-list-wrapper" aria-labelledby="products-heading">
+      <h2 id="products-heading" style={{ marginBottom: 'var(--space-md)' }}>All Products</h2>
+      <ul className='products-grid'>
         {info?.products.map((item: any) => {
           return (
-            <div key={item.id}>
-              <h2>{item.title}</h2>
-              <nav>
-                <NavLink 
-                  to={`/products/${item.id}`}
-                  className={({ isActive }) => isActive ? 'active' : ''}
-                >
-                  {item.title}
-                </NavLink>
-              </nav>
-            </div>
+            <li key={item.id}>
+              {/* Make the entire card clickable by wrapping it in NavLink */}
+              <NavLink to={`/products/${item.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Card product={item} />
+              </NavLink>
+            </li>
           )
         })}
-      </section>
+      </ul>
+    </section>
   )
 }
 

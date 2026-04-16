@@ -1,0 +1,54 @@
+.product-category {
+  min-width: 250px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.product-category-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: var(--space-0);
+  padding: var(--space-0);
+}
+
+/* 1. Visually hide the actual radio circles, but keep them for accessibility */
+.product-category-list input[type="radio"] {
+  position: absolute;
+  /* Opacity remains 0 as it's a visual alpha value, not spacing */
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 2. Style the Label to look like a clean, clickable button/row */
+.product-category-list label {
+  display: block;
+  /* Replaced 10px 16px with our global layout tokens! */
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 500;
+  text-transform: capitalize;
+  transition: all var(--transition-base);
+  border: 1px solid transparent; /* Prevents layout shifting on hover */
+}
+
+/* 3. Add a nice hover effect for inactive states */
+.product-category-list input[type="radio"]:not(:checked) + label:hover {
+  background-color: var(--color-muted-bg);
+  border: 1px solid var(--border-color);
+}
+
+/* 4. The Magic: Style the label brightly WHEN the invisible radio is checked */
+.product-category-list input[type="radio"]:checked + label {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Slight tweak for dark mode active states */
+[data-theme='dark'] .product-category-list input[type="radio"]:checked + label {
+  background-color: var(--color-primary-dark);
+}
