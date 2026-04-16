@@ -1,6 +1,7 @@
+import type { ReactNode } from 'react';
 import './Card.css';
 
-function Card({ product }: { product: any }) {
+function Card({ product, children }: Readonly<{ product: any; children?: ReactNode }>) {
   return (
     <article>
       <div className="card-image-container">
@@ -30,6 +31,7 @@ function Card({ product }: { product: any }) {
             <span key={tag} className="tag">#{tag}</span>
           ))}
         </div>
+        {children}
       </div>
     </article>
   )
