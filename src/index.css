@@ -38,7 +38,7 @@
 
   /* Shadows */
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 var(--space-sm) var(--space-lg) rgba(0, 0, 0, 0.1);
 
   /* Effects & Transitions */
   --transition-base: 0.3s ease;
@@ -57,7 +57,7 @@
   --border-color: #2c2c2c;
   --nav-active-color: #66b2ff; /* Lighter, vibrant blue for dark theme readability */
   --color-muted-bg: #2c2c2c;
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 var(--space-sm) var(--space-lg) rgba(0, 0, 0, 0.4);
 }
 
 * {
