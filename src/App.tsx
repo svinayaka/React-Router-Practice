@@ -24,7 +24,7 @@ function App() {
             Products
           </NavLink>
         </nav>
-        <button onClick={toggleTheme}>Toggle Theme</button>
+        <button type='button' onClick={toggleTheme}>Toggle Theme</button>
       </header>
       <main>
         <Routes>

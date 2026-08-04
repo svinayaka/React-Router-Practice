@@ -1,6 +1,6 @@
-function SearchButton({searchCategory}: {searchCategory: string}) {
+function SearchButton({searchCategory}: Readonly<{searchCategory: string}>) {
   return (
-    <button aria-label={`Search ${searchCategory}`}>Search</button>
+    <button type="button" aria-label={`Search ${searchCategory}`}>Search</button>
   )
 }
 
