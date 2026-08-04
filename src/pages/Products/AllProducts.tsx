@@ -10,12 +10,25 @@ function AllProducts() {
   const [info, setInfo] = useState<any>();
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const apiRequest = async () => {
-      const response = await fetch('https://dummyjson.com/products');
-      const data = await response.json();
-      setInfo(data);
+      try {
+        const response = await fetch('https://dummyjson.com/products', { signal: controller.signal });
+        const data = await response.json();
+        setInfo(data);
+      } catch (err: any) {
+        if (err.name !== 'AbortError') {
+          console.error("Http Request failed to fetch response:", err.message);
+        }
+      }
     };
+
     apiRequest();
+
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   return (
