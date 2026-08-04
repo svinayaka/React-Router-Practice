@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Card from '../../components/Card';
 import './ProductCategoryDetail.css';
@@ -8,13 +8,29 @@ function ProductCategoryDetail() {
   const params = useParams();
   
   useEffect(() => {
+    const controller = new AbortController();
+
     const getProductsFromAPI = async() => {
-      const productDetails = await fetch(`https://dummyjson.com/products/category/${params.category}`);
-      const data = await productDetails.json();
-      // The API returns an object with a 'products' array, so we must access it specifically!
-      setProducts(data.products);
+      try {
+        const productDetails = await fetch(
+          `https://dummyjson.com/products/category/${params.category}`,
+          { signal: controller.signal }
+        );
+        const data = await productDetails.json();
+        // The API returns an object with a 'products' array, so we must access it specifically!
+        setProducts(data.products);
+      } catch (err: any) {
+        if (err.name !== 'AbortError') {
+          console.error("Http Request failed to fetch category products:", err.message);
+        }
+      }
     }
+
     getProductsFromAPI();
+
+    return () => {
+      controller.abort();
+    };
   }, [params.category])
 
   return (
@@ -24,7 +40,9 @@ function ProductCategoryDetail() {
         {products?.map((item: any) => {
           return (
             <li key={item.id}>
-              <Card product={item} />
+              <NavLink to={`/products/${item.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Card product={item} />
+              </NavLink>
             </li>
           )
         })}
