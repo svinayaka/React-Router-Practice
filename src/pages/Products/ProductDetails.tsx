@@ -31,7 +31,12 @@ function ProductDetails() {
               <ul className="gallery-grid">
                 {product.images.map((image: string) => (
                   <li key={image} className="gallery-item">
-                    <img src={image} alt={`${product.title} angle`} loading='lazy'/>
+                    <img
+                      src={image}
+                      alt={`${product.title} angle`}
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </li>
                 ))}
               </ul>
